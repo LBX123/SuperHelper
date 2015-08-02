@@ -1,14 +1,15 @@
 package com.superhelper.app.util;
 
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.protocol.HTTP;
-
-import android.app.Application;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.BinaryHttpResponseHandler;
-import com.loopj.android.http.PersistentCookieStore;
 import com.loopj.android.http.RequestParams;
 import com.loopj.android.http.TextHttpResponseHandler;
 
@@ -30,7 +31,12 @@ public class HttpUtil {
 	public static String TextBox2 = "";
     public static String txtSecretCode = "";
     public static String txtUserName = "";
-	
+	public static String __EVENTARGUMENT="";
+	public static String __EVENTTARGET="";
+	public static String xnd="";
+	public static String xqd="";
+	public static Set<String> years=new LinkedHashSet<String>();
+	public static Set<String> semesters=new LinkedHashSet<String>();
     static{
     	client.setTimeout(10000);
 //    	client.addHeader("Host", Host);

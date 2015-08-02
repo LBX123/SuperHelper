@@ -11,23 +11,27 @@ import com.superhelper.app.util.WeekParser;
 import com.superhelper.app.view.CourseView;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ScrollView;
 import android.widget.Spinner;
 
-public class CourseActivity extends BaseActivity implements OnItemSelectedListener{
+public class CourseActivity extends BaseActivity implements OnItemSelectedListener,OnClickListener{
 	private CourseLayout courseLayout;
 	private ScrollView scrollView;
 	private Spinner spinner;
 	private ArrayAdapter<String> adapter;
 	private List<Course> list;
+	private ImageButton btnMore;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -42,6 +46,8 @@ public class CourseActivity extends BaseActivity implements OnItemSelectedListen
 		scrollView=(ScrollView) findViewById(R.id.scroll_view);
 		scrollView.setFillViewport(true);
 		spinner=(Spinner) findViewById(R.id.spinner_week);
+		btnMore=(ImageButton) findViewById(R.id.btn_more);
+		btnMore.setOnClickListener(this);
 		adapter=new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, WeekParser.getWeekList(25));
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinner.setAdapter(adapter);
@@ -78,6 +84,18 @@ public class CourseActivity extends BaseActivity implements OnItemSelectedListen
 				view.setGravity(Gravity.CENTER);
 				courseLayout.addView(view);
 			}	
+		}
+	}
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		switch (v.getId()) {
+		case R.id.btn_more:
+			jumpTo(SelectSemesterActivity.class);
+			break;
+
+		default:
+			break;
 		}
 	}
 }

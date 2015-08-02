@@ -22,6 +22,7 @@ import android.widget.Button;
 
 public class MenuActivity extends BaseActivity {
 	private Button get_courses;
+	private SharedPreferences pf;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -41,6 +42,13 @@ public class MenuActivity extends BaseActivity {
 					public void onSuccess(int arg0, Header[] arg1, String res) {
 						// TODO Auto-generated method stub
 						DBOperation.getInstance(MenuActivity.this).saveCourses(ParseHtml.parseCourse(res));
+						HttpUtil.years=ParseHtml.parse(res, "name", "xnd", "value");
+						HttpUtil.semesters=ParseHtml.parse(res, "name", "xqd", "value");
+						pf=getSharedPreferences("data", MODE_PRIVATE);
+						Editor edit = pf.edit();
+						edit.putStringSet("years", HttpUtil.years);
+						edit.putStringSet("semesters", HttpUtil.semesters);
+						edit.commit();
 						Intent intent=new Intent(MenuActivity.this,CourseActivity.class);
 						startActivity(intent);
 						closeProgress();
