@@ -1,5 +1,6 @@
 package com.superhelper.app.util;
 
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
@@ -7,9 +8,12 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
+import android.content.Context;
+
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.BinaryHttpResponseHandler;
+import com.loopj.android.http.PersistentCookieStore;
 import com.loopj.android.http.RequestParams;
 import com.loopj.android.http.TextHttpResponseHandler;
 
@@ -28,9 +32,9 @@ public class HttpUtil {
 	public static String RadioButtonList1="学生";
 	public static String __VIEWSTATE="dDwyODE2NTM0OTg7Oz429KFYILujcPfYvN3IBCq9kLaO+A==";
 	public static String __VIEWSTATEGENERATOR="92719903";
-	public static String TextBox2 = "";
+	public static String TextBox2 = "lin807403827xi";
     public static String txtSecretCode = "";
-    public static String txtUserName = "";
+    public static String txtUserName = "201205070626";
 	public static String __EVENTARGUMENT="";
 	public static String __EVENTTARGET="";
 	public static String xnd="";
@@ -39,7 +43,7 @@ public class HttpUtil {
 	public static Set<String> semesters=new LinkedHashSet<String>();
     static{
     	client.setTimeout(10000);
-//    	client.addHeader("Host", Host);
+    	client.addHeader("Host", Host);
     	client.addHeader("Referer", URL_LOGIN);
     }
     /**

@@ -26,6 +26,9 @@ public class DBOperation {
 		}
 		return dbOperation;
 	}
+	public void deleteAllData(){
+		db.delete("Course", null, null);
+	}
 	public void saveCourses(List<Course> list){
 		for (Course course : list) {
 			ContentValues values=new ContentValues();
